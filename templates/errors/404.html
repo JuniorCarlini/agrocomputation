@@ -1,0 +1,27 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<div class="container min-h-screen flex flex-col items-center justify-center">
+    <div class="text-center">
+        <!-- Número do erro em destaque -->
+        <h1 class="text-9xl font-bold text-gray-300">404</h1>
+        
+        <!-- Mensagem principal -->
+        <h2 class="mb-8 text-2xl font-semibold text-gray-800">
+            Ops! Página não encontrada
+        </h2>
+        
+        <!-- Mensagem explicativa -->
+        <p class="mb-8 text-gray-600">
+            A página que você está procurando pode ter sido removida, 
+            teve seu nome alterado ou está temporariamente indisponível.
+        </p>
+
+        <!-- Botão de voltar -->
+        <a href="{% url 'home' %}" 
+           class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+            Voltar para a página inicial
+        </a>
+    </div>
+</div>
+{% endblock %}
