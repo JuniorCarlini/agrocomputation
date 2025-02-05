@@ -1,0 +1,224 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto de Sistemas Agrícolas Inteligentes</title>
+    <link rel="shortcut icon" href="{% static 'icons/favicon.svg' %}" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">    
+    
+    <style>
+        .logo {
+            width: 190px;
+            height: auto;
+        }
+
+        .icon-user {
+            height: 70px;
+            width: 70px;
+        }
+
+        .text-justify_abolt {
+            text-align: justify;
+        }
+
+        body {
+            background-color: #f4f4f5;
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            justify-content: center;
+        }
+
+        .main-container {
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .modern-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            width: 100%;
+            height: 100%;
+        }
+
+        .modern-card:hover {
+            transform: scale(1.02);
+        }
+
+        .module-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 15px;
+            height: 100%;
+        }
+
+        .module-btn img {
+            width: 250px;
+            height: 240px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        
+        .team-gallery img {
+            max-width: 150px;
+            border-radius: 50%;
+            margin: 10px;
+        }
+
+        .project-gallery img {
+            width: 100%;
+            max-width: 300px;
+            margin: 10px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container py-5 main-container">
+        <div class="text-center mb-5">
+            <img src="{% static 'icons/logo.svg' %}" alt="Logo do Projeto" class="mb-3" width="200" height="100">
+            <h1 class="display-6 fw-bold">Projeto de Sistemas Agrícolas Inteligentes</h1>
+            <p class="lead text-muted">Desenvolvendo soluções tecnológicas para agricultura moderna</p>
+        </div>
+
+        <div class="row justify-content-center mb-5">
+            <div class="col-md-6">
+                <div class="h-100 d-flex justify-content-end pe-3">
+                    <a href="#irrigacao" class="btn btn-light modern-card module-btn">
+                        <img src="https://compote.slate.com/images/22ce4663-4205-4345-8489-bc914da1f272.jpeg?crop=1560%2C1040%2Cx0%2Cy0" alt="Sistema de Irrigação">
+                        <h3 class="mt-3">Sistema de Irrigação</h3>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="h-100 d-flex justify-content-start ps-3">
+                    <a href="#estacao-meteorologica" class="btn btn-light modern-card module-btn">
+                        <img src="https://compote.slate.com/images/22ce4663-4205-4345-8489-bc914da1f272.jpeg?crop=1560%2C1040%2Cx0%2Cy0" alt="Estação Meteorológica">
+                        <h3 class="mt-3">Estação Meteorológica</h3>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mb-5">
+                <div class="row justify-content-center">
+                <h2 class="text-center mb-5">Professor Orientador</h2>
+                <div class="col-lg-3 col-md-4 col-sm-6 text-center mb-4">
+                    <img src="https://avatars.githubusercontent.com/u/10272669?v=4" class="img-fluid rounded-circle icon-user m-0" alt="Miguel Zamberlan">
+                    <h6 class="fw-bold m-0">Miguel Zamberlan</h6>
+                    <p class="mb-1">Professor Orientador</p>
+                    <a href="https://github.com/miguelzamberlan" target="_blank" class="btn btn-dark btn-sm mb-3">
+                        <i class="bi bi-github"></i> GitHub
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <h2 class="text-center mb-5">Equipe do Projeto</h2>
+                <div class="col-lg-3 col-md-4 col-sm-6 text-center mb-4">
+                    <img src="https://avatars.githubusercontent.com/u/116855041?v=4" class="img-fluid rounded-circle icon-user m-0" alt="Junior Carlini">
+                    <h6 class="fw-bold m-0">Junior Carlini</h6>
+                    <a href="https://github.com/JuniorCarlini" target="_blank" class="btn btn-dark btn-sm mb-3">
+                        <i class="bi bi-github"></i> GitHub
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 text-center mb-4">
+                    <img src="https://avatars.githubusercontent.com/u/144291796?v=4" class="img-fluid rounded-circle icon-user m-0" alt="Ronis Daniel">
+                    <h6 class="fw-bold m-0">Ronis Daniel</h6>
+                    <a href="https://github.com/ronys69" target="_blank" class="btn btn-dark btn-sm mb-3">
+                        <i class="bi bi-github"></i> GitHub
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 text-center mb-4">
+                    <img src="https://avatars.githubusercontent.com/u/133825285?v=4" class="img-fluid rounded-circle icon-user m-0" alt="Raiani Fantichelli">
+                    <h6 class="fw-bold m-0">Raiani Fantichelli</h6>
+                    <a href="https://github.com/raifantichelli" target="_blank" class="btn btn-dark btn-sm mb-3">
+                        <i class="bi bi-github"></i> GitHub
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 text-center mb-4">
+                    <img src="https://avatars.githubusercontent.com/u/170126260?v=4" class="img-fluid rounded-circle icon-user m-0" alt="Thaís Schardosin">
+                    <h6 class="fw-bold m-0">Thaís Schardosin</h6>
+                    <a href="https://github.com/thaais0021" target="_blank" class="btn btn-dark btn-sm mb-3">
+                        <i class="bi bi-github"></i> GitHub
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 text-center mb-4">
+                    <img src="https://avatars.githubusercontent.com/u/127909559?v=4" class="img-fluid rounded-circle icon-user m-0" alt="Felipe Schuster">
+                    <h6 class="fw-bold m-0">Felipe Schuster</h6>
+                    <a href="https://github.com/Felipe-Schuster" target="_blank" class="btn btn-dark btn-sm mb-3">
+                        <i class="bi bi-github"></i> GitHub
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 text-center mb-4">
+                    <img src="https://avatars.githubusercontent.com/u/183447743?v=4" class="img-fluid rounded-circle icon-user m-0" alt="Ronaldo do Carmo">
+                    <h6 class="fw-bold m-0">Ronaldo do Carmo</h6>
+                    <a href="https://github.com/RonaCarmo" target="_blank" class="btn btn-dark btn-sm mb-3">
+                        <i class="bi bi-github"></i> GitHub
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 text-center mb-4">
+                    <img src="https://avatars.githubusercontent.com/u/183447659?v=4" class="img-fluid rounded-circle icon-user m-0" alt="Meire Oliveira">
+                    <h6 class="fw-bold m-0">Meire Oliveira</h6>
+                    <a href="https://github.com/Meire-Oliveira" target="_blank" class="btn btn-dark btn-sm mb-3">
+                        <i class="bi bi-github"></i> GitHub
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 text-center mb-4">
+                    <img src="https://avatars.githubusercontent.com/u/183562637?v=4" class="img-fluid rounded-circle icon-user m-0" alt="Josi Simões">
+                    <h6 class="fw-bold m-0">Josi Simões</h6>
+                    <a href="https://github.com/jozisimoes" target="_blank" class="btn btn-dark btn-sm mb-3">
+                        <i class="bi bi-github"></i> GitHub
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 text-center mb-4">
+                    <img src="https://avatars.githubusercontent.com/u/183447670?v=4" class="img-fluid rounded-circle icon-user m-0" alt="Josi Simões">
+                    <h6 class="fw-bold m-0">Rayane Mattia</h6>
+                    <a href="https://github.com/mattiarayane" target="_blank" class="btn btn-dark btn-sm mb-3">
+                        <i class="bi bi-github"></i> GitHub
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 text-center mb-4">
+                    <img src="https://avatars.githubusercontent.com/u/226119?v=4" class="img-fluid rounded-circle icon-user m-0" alt="Josi Simões">
+                    <h6 class="fw-bold m-0">Gabriel da Silva</h6>
+                    <a href="https://github.com/Gabrielagrocomputacao" target="_blank" class="btn btn-dark btn-sm mb-3">
+                        <i class="bi bi-github"></i> GitHub
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 text-center mb-4">
+                    <img src="https://avatars.githubusercontent.com/u/144747175?v=4" class="img-fluid rounded-circle icon-user m-0" alt="Ana Paula">
+                    <h6 class="fw-bold m-0">Ana Paula</h6>
+                    <a href="https://github.com/anapaulaIFRO" target="_blank" class="btn btn-dark btn-sm mb-3">
+                        <i class="bi bi-github"></i> GitHub
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 text-center mb-4">
+                    <img src="https://avatars.githubusercontent.com/u/226119?v=4" class="img-fluid rounded-circle icon-user m-0" alt="Ana Paula">
+                    <h6 class="fw-bold m-0">Valdeci de Paula</h6>
+                    <a href="#" target="_blank" class="btn btn-dark btn-sm mb-3">
+                        <i class="bi bi-github"></i> GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center">
+            <h2 class="mb-4">Galeria</h2>
+            <div class="project-gallery row justify-content-center">
+                <div class="col-md-4"><img src="{% static 'images/img-1.jpg' %}" alt="Projeto 1"></div>
+                <div class="col-md-4"><img src="{% static 'images/img-1.jpg' %}" alt="Projeto 1"></div>
+                <div class="col-md-4"><img src="{% static 'images/img-1.jpg' %}" alt="Projeto 1"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
