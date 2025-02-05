@@ -1,4 +1,4 @@
-# Projeto AgroComputation
+# Agrocomputação
 
 ## Descrição
 Este projeto integra duas aplicações Django: uma Estação Meteorológica e um Sistema de Horta Automatizado. Ambos os sistemas utilizam microcontroladores ESP32 para coleta e transmissão periódica de dados.
