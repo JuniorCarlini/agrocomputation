@@ -19,14 +19,8 @@ def login_view(request):
 
     return render(request, 'users/login.html')
 
-def about_view(request):
-    return render(request, 'about/about.html')
-
 def custom_404(request, exception=None):
     context = {}
     response = render(request, 'errors/404.html', context)
     response.status_code = 404
     return response
-
-def home(request):
-    return render(request, 'home.html')
