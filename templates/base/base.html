@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="{% static '' %}" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'icons/favicon.svg' %}" type="image/x-icon">
     <title>Agrocomputação | {% block title %}{% endblock %}</title>
 
     <!-- Importação do Bootstrap 5 -->
@@ -23,13 +23,147 @@
     <!-- Importação do Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     
-    <!-- Estilos personalizados -->
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <!-- Apex Charts -->
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+    <style>
+        body {
+            background-color: rgb(247, 248, 251);
+        }
+        
+        .navbar {
+            background: linear-gradient(to right,#01A970, #197656);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding-bottom: 10px;
+            padding-top: 10px;
+        }
+
+        .logo {
+            margin-bottom: 10px;
+        }
+        
+        .dashboard-container {
+            padding: 20px;
+        }
+        
+        .card {
+            margin-bottom: 20px;
+        }
+        
+        .chart-container {
+            width: 100%;
+            height: 400px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        a:hover {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        a:visited {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        a:active {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .text-color-primary {
+            color: #16365f;
+        }
+        
+        .text-color-secondary {
+            color: #6b859e;
+        }
+        
+        .text-color-tertiary {
+            color: rgb(247, 248, 251);;
+        }
+        
+        .row-style {
+            background-color: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .container-style {
+            background-color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .container-gradient-style {
+            background: linear-gradient(to top, #025cb5, #66a3ff);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05);
+            color: #fff;
+            height: 430px;
+        }
+        
+        .gradient-text {
+            font-size: 90px;
+            background: linear-gradient(to top, #0f81f3, #ffffff);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        
+        .icon-temp {
+            width: 80px;
+            height: 80px;
+            margin-top: -30px;
+            filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.2));
+            opacity: 0.9;
+        }
+        
+        .text-localization {
+            margin-bottom: -30px;
+            color: rgb(247, 248, 251);  ;
+        }
+        
+        .icon-localization {
+            margin-top: 65px;
+            margin-bottom: -2px;
+        }
+        
+        .toast-icon {
+            width: 25px;
+            height: 25px;
+        }
+
+        .custom-button-menu {
+            background-color: #0faf77 !important;
+            border: none !important;
+            color: white !important;
+        }
+        
+        .custom-button-menu:hover {
+            background-color:rgba(15, 175, 119, 0.85) !important;
+            color: white !important;
+        }
+        
+        .custom-button-menu:active {
+            background-color:rgba(15, 175, 119, 0.85) !important;  /* ou o código da cor rosa que você preferir */
+            color: white !important;
+        }
+    </style>
     
     {% block extra_styles %}{% endblock %}
 </head>
 <body>
 
+    {% include 'partials/navbar.html' %}
 
     <!-- Conteúdo da página -->
     <main class="container espacing-title">
@@ -90,7 +224,7 @@
            })
         });
     </script>
-
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     {% block extra_scripts %}{% endblock %}
 </body>
