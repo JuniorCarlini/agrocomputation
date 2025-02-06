@@ -117,22 +117,30 @@
 </head>
 <body>
     <nav class="navbar navbar-color">
-        <div class="container-fluid">
+        <div class="container-fluid justify-content-center">
             <a href="/">
-                <img class="ms-5 logo" src="{% static '/icons/logo_largue.svg' %}" alt="logo" height="35">
+                <img class="logo" src="{% static '/icons/logo_largue.svg' %}" alt="logo" height="40">
             </a>
         </div>
     </nav>
 
     <div class="container py-5 main-container">
-        <div class="text-center mb-5">
+        <div class="text-center">
             <h1 class="display-6 fw-bold">Projeto de Sistemas Agrícolas Inteligentes</h1>
             <div class="row">
                 <div class="col-md-9 text-justify_abolt mx-auto">
                     <p class="lead text-muted text-justify_abolt">ㅤㅤEsse projeto foi desenvolvido pela primeira turma de Agrocomputação do IFRO - Campus São Miguel do Guaporé (2022-2025), focando em soluções tecnológicas para a agricultura moderna. Os dois últimos projetos da turma foram feitos com Django e C++, unindo eficiência e escalabilidade para otimizar processos agrícolas.</p>
                 </div>
-             </div>        </div>
-        <!-- Rest of your existing content -->
+             </div>        
+        </div>
+        <div class="d-flex justify-content-center gap-3 mb-4">
+            <a href="https://www.instagram.com/agro.computacao/" target="_blank" class="btn btn-dark" style="width: 200px;">
+                <i class="bi bi-instagram"></i> Instagram
+            </a>
+            <a href="https://github.com/JuniorCarlini/agrocomputation" target="_blank" class="btn btn-dark" style="width: 200px;">
+                <i class="bi bi-github"></i> Repositório
+            </a>
+        </div>
         <div class="row mb-5 justify-content-center">
             <div class="col-md-6 col-lg-4 d-flex justify-content-center mb-4 text-center">
                 <a href="#irrigacao" class="btn btn-light module-btn">
@@ -252,9 +260,9 @@
                 <h2 class="mb-4">Galeria</h2>
                 <div class="project-gallery row justify-content-center">
                     <div class="col-md-4"><img src="{% static 'images/img-1.jpg' %}" alt="Projeto 1"></div>
-                    <div class="col-md-4"><img src="{% static 'images/img-1.jpg' %}" alt="Projeto 1"></div>
-                    <div class="col-md-4"><img src="{% static 'images/img-1.jpg' %}" alt="Projeto 1"></div>
-                    <div class="col-md-4"><img src="{% static 'images/img-1.jpg' %}" alt="Projeto 1"></div>
+                    <div class="col-md-4"><img src="{% static 'images/img-2.jpg' %}" alt="Projeto 1"></div>
+                    <div class="col-md-4"><img src="{% static 'images/img-3.jpg' %}" alt="Projeto 1"></div>
+                    <div class="col-md-4"><img src="{% static 'images/img-4.jpg' %}" alt="Projeto 1"></div>
                     <div class="col-md-4"><img src="{% static 'images/img-1.jpg' %}" alt="Projeto 1"></div>
                     <div class="col-md-4"><img src="{% static 'images/img-1.jpg' %}" alt="Projeto 1"></div>
                 </div>
