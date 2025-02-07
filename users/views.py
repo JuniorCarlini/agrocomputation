@@ -5,7 +5,7 @@ from django.contrib.auth import authenticate, login
 
 def login_view(request):
     if request.user.is_authenticated:
-        return redirect("dashboard")
+        return redirect("configuration")
     if request.method == "POST":
         username = request.POST['username']
         password = request.POST['password']
@@ -13,7 +13,7 @@ def login_view(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('dashboard')
+            return redirect('configuration')
         else:
             messages.error(request, 'Usuário ou senha inválidos.')
 
