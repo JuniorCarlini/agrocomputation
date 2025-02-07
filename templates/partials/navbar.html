@@ -1,0 +1,106 @@
+{% load static %}
+
+<nav class="navbar navbar-color">
+    <div class="container-fluid d-flex justify-content-between align-items-center">
+        
+        <a href="/" class="ms-5">
+            <img class="logo" src="{% static '/icons/logo_largue.svg' %}" alt="logo" height="40">
+        </a>
+        
+        <button type="button" class="btn custom-button-menu btn-lg me-5" data-bs-toggle="offcanvas" 
+                data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" 
+                aria-label="Toggle navigation">
+            <i class="bi bi-list"></i>
+        </button>
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+            <div class="offcanvas-header">
+                <button type="button" class="btn-close ms-2 mt-3" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <ul class="navbar-nav justify-content-end flex-grow-1">
+                    
+                    <li class="nav-item">
+                        <a class="nav-link ms-3 mt-2" aria-current="page" href="/"><i class="fa-solid fa-house"></i> Inicio</a>
+                    </li>
+
+                    <!-- First Accordion -->
+                    <div class="accordion accordion-flush" id="accordionOne">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" 
+                                        data-bs-target="#flush-collapseOne" aria-expanded="false" 
+                                        aria-controls="flush-collapseOne">
+                                    <span><i class="fa-solid fa-wheat-awn"></i> Sistema de irrigação</span>
+                                </button>
+                            </h2>
+                            <div id="flush-collapseOne" class="accordion-collapse collapse" 
+                                 data-bs-parent="#accordionOne">
+                                <div class="ms-3">
+                                    <div class="accordion-body">
+                                        <a href="/irrigation/"><i class="fa-solid fa-chart-line"></i> Dashboard</a>
+                                    </div>
+                                    <div class="accordion-body">
+                                        <a href="/irrigation/temperature-chart/"><i class="fa-solid fa-temperature-arrow-up"></i> Sensor Temperatura do Ar</a>
+                                    </div>
+                                    <div class="accordion-body">
+                                        <a href="/irrigation/air-humidity-chart/"><i class="fa-solid fa-temperature-arrow-up"></i> Sensor Umidade do Ar</a>
+                                    </div>
+                                    <div class="accordion-body">
+                                        <a href="/irrigation/soil-humidity-chart/"><i class="fa-solid fa-temperature-arrow-up"></i> Sensor Umidade do Solo</a>
+                                    </div>
+                                    <div class="accordion-body">
+                                        <a href="/irrigation/water-usage-chart/"><i class="fa-solid fa-droplet"></i> Uso Diario de Água</a>
+                                    </div>
+                                    <div class="accordion-body">
+                                        <a href="/irrigation/fertil-usage-chart/"><i class="fa-solid fa-droplet"></i> Histórico de Fertirrigação</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <!-- Second Accordion -->
+                    <div class="accordion accordion-flush" id="accordionTwo">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" 
+                                        data-bs-target="#flush-collapseTwo" aria-expanded="false" 
+                                        aria-controls="flush-collapseTwo">
+                                    <span><i class="fa-solid fa-cloud-moon-rain"></i> Estação Meteorológica</span>
+                                </button>
+                            </h2>
+                            <div id="flush-collapseTwo" class="accordion-collapse collapse" 
+                                 data-bs-parent="#accordionTwo">
+                                <div class="ms-3">
+                                    <div class="accordion-body">
+                                        <a href="/station/"><i class="fa-solid fa-chart-line"></i> Dashboard</a>
+                                    </div>
+                                    <div class="accordion-body">
+                                        <a href="/temperature-chart/"><i class="fa-solid fa-temperature-arrow-up"></i> Sensor Temperatura do Ar</a>
+                                    </div>
+                                    <div class="accordion-body">
+                                        <a href="/air-humidity-chart/"><i class="fa-solid fa-temperature-arrow-up"></i> Sensor Umidade do Ar</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <!-- Navigation Items -->
+                    <li class="nav-item">
+                        <a class="nav-link ms-3 mt-2" aria-current="page" href="/configuration/"><i class="fa-solid fa-gear"></i> Configurações</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <form method="POST" action="{% url 'logout' %}" style="display: inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="nav-link mt-3 ms-3 btn btn-link" style="padding: 0; border: none; color: inherit;">
+                                <i class="fa-solid fa-right-from-bracket"></i> Sair
+                            </button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
