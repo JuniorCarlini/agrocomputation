@@ -16,7 +16,6 @@ DEBUG = True
 ALLOWED_HOSTS = ["*",'localhost', '127.0.0.1']
 
 # Application definition
-
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -28,8 +27,8 @@ INSTALLED_APPS = [
 
     # Third-party apps
     "users",
-    "station",
     "comum",
+    "station",
     "irrigation",
 ]
 
@@ -67,8 +66,6 @@ WSGI_APPLICATION = "project.wsgi.application"
 
 
 # Database
-# https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
@@ -78,8 +75,6 @@ DATABASES = {
 
 
 # Password validation
-# https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
@@ -97,7 +92,6 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 # Internationalization
-
 LANGUAGE_CODE = "pt-br"
 
 TIME_ZONE = "UTC"
@@ -121,6 +115,6 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # Custom user model
-LOGIN_URL = '/login/'
+LOGIN_URL = '/users/login/'
 
 LOGOUT_REDIRECT_URL = 'login'
