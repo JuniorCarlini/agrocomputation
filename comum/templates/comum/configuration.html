@@ -1,0 +1,131 @@
+{% extends "base/base.html" %}
+
+{% load static %}
+
+{% block title %}Configurações{% endblock %}
+
+{% block content %}
+
+<div class="container mt-4">
+    <h2 class="mt-4 mb-4 ms-3 text-color-primary">Configurações</h2>
+
+    <form method="post">
+        {% csrf_token %}
+        <div class="row row-style mb-3">
+            <div class="form-group">
+                <label for="flow-rate" class="form-label m-0 text-color-secondary">Taxa de Fluxo da Irrigação (L/min):</label>
+                <input type="number" step="0.01" id="flow-rate" name="flow_rate" class="form-control w-100" placeholder="{{ flow_rate.rate }}" required>
+                <p class="text-center text-color-secondary mt-4">Nesse campo, deve ser inserido o valor da vazão em litros de água por minuto.</p>
+            </div>
+            <div class="col-12 mt-2 mb-2">
+                <button type="submit" name="update_flow_rate" class="btn w-100 btn-success"><i class="bi bi-save"></i> Atualizar Taxa de Fluxo</button>
+            </div>
+        </div>
+    </form>
+
+    <form method="post">
+        {% csrf_token %}
+        <div class="row row-style mb-3">
+            <div class="form-group">
+                <label for="time-fertil" class="form-label m-0 text-color-secondary">Ciclo de Tempo da Fertirrigação (h):</label>
+                <input type="number" step="0.01" id="time-fertil" name="time_fertil" class="form-control w-100" value="{{ config_fertil.duration_hours }}" required>
+                <p class="text-center text-color-secondary mt-4">Nesse campo, deve ser inserido o intervalo de tempo da fertirrigação.</p>
+            </div>
+            <div class="col-12 mt-2 mb-2">
+                <button type="submit" name="update_time_fertil" class="btn w-100 btn-success"><i class="bi bi-stopwatch"></i> Atualizar Ciclo de Tempo</button>
+            </div>
+        </div>
+    </form>
+
+    <form method="post">
+        {% csrf_token %}
+        <div class="row row-style mb-3">
+            <div class="form-group">
+                <label for="time_fertil_ms" class="form-label m-0 text-color-secondary">Tempo de Operação da Fertirrigação (ms):</label>
+                <input type="number" step="1" id="time_fertil_ms" name="time_ferti_ms" class="form-control w-100" value="{{ time_ferti.duration_ms }}" required>
+                <p class="text-center text-color-secondary mt-4">
+                    Nesse campo, deve ser inserido o tempo em que a bomba da fertirrigação será ativada, 
+                    <span class="text-danger">a vazão da bomba é de --ml pelo tempo de --ms.</span>
+                </p>
+            </div>
+            <div class="col-12 mt-2 mb-2">
+                <button type="submit" name="update_time_fertil" class="btn w-100 btn-success">
+                    <i class="bi bi-stopwatch"></i> Atualizar Tempo de Operação
+                </button>
+            </div>
+        </div>
+    </form>
+    
+
+    <form method="post">
+        {% csrf_token %}
+        <div class="row row-style mb-3">
+            <div class="form-group">
+                <label for="token" class="form-label m-0 text-color-secondary">Token de Autenticação:</label>
+                <input type="text" id="token" name="token" class="form-control w-100" value="{{ configuracao.token }}" disabled>
+                <p class="text-center text-danger mt-4">Crie um novo token apenas se tiver total confiança no que está fazendo!</p>
+            </div>
+            <div class="col-12 mt-2 mb-2">
+                <button type="button" onclick="copyToken()" class="btn w-100 btn-success"><i class="bi bi-clipboard"></i> Copiar Token</button>
+                <button type="submit" name="generate_token" class="btn w-100 btn-danger mt-2"><i class="bi bi-gear-fill"></i> Gerar Novo Token</button>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="toast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <img src="{% static 'icons/favicon.svg' %}" class="rounded toast-icon me-2" alt="...">
+            <strong class="me-auto text-color-primary">Agrocomputação</strong>
+            <small>agora mesmo</small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body text-center">
+            O token foi copiado para a área de transferência!
+        </div>
+    </div>
+</div>
+
+<script>
+    function copyToken() {
+        var tokenInput = document.getElementById("token");
+        tokenInput.removeAttribute("disabled");
+        tokenInput.select();
+        tokenInput.setSelectionRange(0, 99999);
+
+        if (navigator.clipboard) {
+            navigator.clipboard.writeText(tokenInput.value)
+                .then(() => {
+                    // Inicializa o toast apenas quando necessário
+                    var toastEl = document.getElementById('toast');
+                    var toast = new bootstrap.Toast(toastEl, {
+                        animation: true,
+                        autohide: true,
+                        delay: 3000
+                    });
+                    toast.show();
+                })
+                .catch(err => {
+                    console.error("Erro ao copiar o token: ", err);
+                });
+        } else {
+            try {
+                document.execCommand('copy');
+                var toastEl = document.getElementById('toast');
+                var toast = new bootstrap.Toast(toastEl, {
+                    animation: true,
+                    autohide: true,
+                    delay: 3000
+                });
+                toast.show();
+            } catch (err) {
+                console.error("Erro ao copiar o token: ", err);
+            }
+        }
+        tokenInput.setAttribute("disabled", true);
+    }
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+{% endblock %}
