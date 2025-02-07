@@ -10,12 +10,12 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet"> 
+    <!-- Importação do Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+       
     <style>
-        .navbar {
-            background: linear-gradient(to right,#01A970, #197656);
-        }
-        
+       
         body {
             background-color: var(--bs-body-bg);
             font-family: 'Inter', sans-serif;
@@ -23,9 +23,11 @@
             flex-direction: column;
             min-height: 100vh;
         }
+
         .text-justify_abolt {
             text-align: justify;
         }
+
         .main-container {
             max-width: 1200px;
             width: 100%;
@@ -33,7 +35,7 @@
         }
 
         .navbar {
-            background-color: var(--bs-body-bg);
+            background: linear-gradient(to right,#01A970, #197656);
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             padding-bottom: 20px;
             padding-top: 10px;
@@ -143,18 +145,24 @@
         </div>
         <div class="row mb-5 justify-content-center">
             <div class="col-md-6 col-lg-4 d-flex justify-content-center mb-4 text-center">
-                <a href="#irrigacao" class="btn btn-light module-btn">
+                <a href="irrigation/" class="btn btn-light module-btn">
                     <img src="https://img.freepik.com/fotos-premium/close-up-de-irrigacao-por-gotejamento-de-tubo-com-vazamento-em-um-campo-de-alface_419341-149297.jpg" alt="Sistema de Irrigação">
-                    <div class="overlay">
-                        <h3 class="fw-bold">SISTEMA DE IRRIGAÇÃO</h3>
+                    <div class="overlay position-relative h-100">
+                        <div class="position-absolute bottom-0 start-0 p-3">
+                            <h3 class="fw-bold mb-1">SISTEMA DE IRRIGAÇÃO</h3>
+                            <small class="text-white d-block"><i class="fa-solid fa-hand-pointer"></i> Clique para visualizar</small>
+                        </div>
                     </div>
                 </a>
             </div>
             <div class="col-md-6 col-lg-4 d-flex justify-content-center mb-4 text-center">
-                <a href="#estacao-meteorologica" class="btn btn-light module-btn">
+                <a href="station/" class="btn btn-light module-btn">
                     <img src="https://agroadvance.com.br/wp-content/uploads/2024/04/image-7.png" alt="Estação Meteorológica">
-                    <div class="overlay">
-                        <h3 class="fw-bold">ESTAÇÃO METEOROLÓGICA</h3>
+                    <div class="overlay position-relative h-100">
+                        <div class="position-absolute bottom-0 start-0 p-3">
+                            <h3 class="fw-bold mb-1">ESTAÇÃO METEOROLÓGICA</h3>
+                            <small class="text-white d-block"><i class="fa-solid fa-hand-middle-finger"></i> Clique para visualizar</small>
+                        </div>
                     </div>
                 </a>
             </div>
