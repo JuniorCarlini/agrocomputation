@@ -1,5 +1,6 @@
 from .models import WeatherData
 from rest_framework import status
+from django.shortcuts import render
 from rest_framework.response import Response
 from project.decorators import token_required
 from .serializers import WeatherDataSerializer
@@ -17,3 +18,6 @@ def collect_weather_data(request):
     return Response({
         "error": serializer.errors
     }, status=status.HTTP_400_BAD_REQUEST)
+
+def dashboard_station_view(request):
+    return render(request, 'station/dashboard.html')
