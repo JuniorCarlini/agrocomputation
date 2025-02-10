@@ -14,7 +14,7 @@
                 <h5 class="text-color-tertiary">Temperatura</h5>
                 <h6 class="text-center icon-localization"><i class="bi bi-geo-alt-fill"></i></h6>
                 <h6 class="text-center text-localization">São Miguel do Guaporé</h6>
-                <div id="temperatureValue" class="text-center fw-bold ms-4 gradient-text"></div>
+                <div id="temperatureValue" class="text-center fw-bold ms-4 gradient-text">{{ temperatura_media }}°C</div>
                 <img class="d-block mx-auto icon-temp" src="{% static imagem %}" alt="Ícone do Tempo">
             </div>
         </div>
@@ -30,8 +30,8 @@
             <div class="container container-pressure-style d-flex flex-column" >
                 <h5 class="text-color-secondary">Vento</h5>
                 <div class="text-center d-flex flex-column justify-content-center flex-grow-1">
-                    <h1 class="fw-bold display-1 text-success">N</h1>
-                    <h5 class="fw-normal text-color-secondary">5545(m/s)</h5>
+                    <h1 class="fw-bold display-1 text-success">{{ dados.wind_direction|default:"--" }}</h1>
+                    <h5 class="fw-normal text-color-secondary">{{ dados.wind_speed|default:"0" }} m/s</h5>
                 </div>
             </div>
         </div>
@@ -39,230 +39,169 @@
             <div class="container container-pressure-style d-flex flex-column">
                 <h5 class="text-color-secondary">Pressão</h5>
                 <div class="text-center d-flex flex-column justify-content-center flex-grow-1">
-                    <h2 class="fw-bold text-success">15454hPa</h2>
+                    <h2 class="fw-bold text-success">{{ dados.pressure|default:"0" }} hPa</h2>
                 </div>
             </div>
         </div>
         <div class="col-md-6">
             <div class="container container-style">
                 <h5 class="text-color-secondary">Umidade do Ar</h5>
-                <div id="chart-humidity-air"></div>
+                <div id="humidity-chart"></div>
             </div>
-        </div>
-        <div class="col-md-12">
-            <div class="container container-style">
-                <h5 class="text-color-secondary">Previsão do tempo</h5>
-                <div class="row g-3 p-3 pt-2">
-                    <div class="col-md-3">
-                        <div class="card h-100 bg-light border-0">
-                            <div class="card-body b-0">
-                                <h6 class="card-title text-color-primary">Temperatura</h6>
-                                <p class="h4 text-success mb-0">25.4°C</p>
-                                <small class="text-muted">Min: 22.1°C | Max: 28.7°C</small>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card h-100 bg-light border-0">
-                            <div class="card-body">
-                                <h6 class="card-title text-color-primary">Umidade</h6>
-                                <p class="h4 text-success mb-0">87%</p>
-                                <small class="text-muted">Min: 72% | Max: 99%</small>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card h-100 bg-light border-0 ">
-                            <div class="card-body">
-                                <h6 class="card-title text-color-primary">Vento</h6>
-                                <p class="h4 text-success mb-0">2.6 m/s</p>
-                                <small class="text-muted">Rajadas: 7.5 m/s</small>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card h-100 bg-light border-0">
-                            <div class="card-body">
-                                <h6 class="card-title text-color-primary">Probabilidade de Chuva</h6>
-                                <p class="h4 text-success mb-0">11.9%</p>
-                                <small class="text-muted">Acumulação: 1.68mm</small>
-                            </div>
+        </div> 
+    </div>
+    <div class="col-md-12">
+        <div class="container container-style">
+            <h5 class="text-color-secondary">Previsão do tempo: <span class="fw-normal">amanhã</span></h5>
+            <div class="row g-3 p-3 pt-2">
+                <div class="col-md-3">
+                    <div class="card h-100 bg-light border-0">
+                        <div class="card-body b-0">
+                            <h6 class="card-title text-color-primary">Temperatura</h6>
+                            <p class="h4 text-success mb-0 fw-bold">{{ resumo_meteorologico.temperatura_atual|floatformat:1 }}°C</p>
+                            <small class="text-muted">
+                                Min: {{ resumo_meteorologico.temperatura_min|floatformat:1 }}°C | 
+                                Max: {{ resumo_meteorologico.temperatura_max|floatformat:1 }}°C
+                            </small>
                         </div>
                     </div>
                 </div>
-            </div>
+                <div class="col-md-3">
+                    <div class="card h-100 bg-light border-0">
+                        <div class="card-body">
+                            <h6 class="card-title text-color-primary">Umidade</h6>
+                            <p class="h4 text-success mb-0 fw-bold">{{ resumo_meteorologico.umidade_atual|floatformat:0 }}%</p>
+                            <small class="text-muted">
+                                Min: {{ resumo_meteorologico.umidade_min|floatformat:0 }}% | 
+                                Max: {{ resumo_meteorologico.umidade_max|floatformat:0 }}%
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card h-100 bg-light border-0 ">
+                        <div class="card-body">
+                            <h6 class="card-title text-color-primary">Vento</h6>
+                            <p class="h4 text-success mb-0 fw-bold">{{ resumo_meteorologico.velocidade_vento|floatformat:1 }} m/s</p>
+                            <small class="text-muted">Rajadas: {{ resumo_meteorologico.rajada_vento|floatformat:1 }} m/s</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card h-100 bg-light border-0">
+                        <div class="card-body">
+                            <h6 class="card-title text-color-primary">Probabilidade de Chuva</h6>
+                            <p class="h4 text-success mb-0 fw-bold">{{ resumo_meteorologico.probabilidade_chuva|floatformat:1 }}%</p>
+                            <small class="text-muted">Acumulação: {{ resumo_meteorologico.acumulado_chuva|floatformat:2 }}mm</small>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 <script>
-    // Get data from Django context
-    let sensorData;
-    let waterData;
-
-    try {
-        sensorData = JSON.parse('{{ sensor_data|safe }}');
-        waterData = JSON.parse('{{ water_data|safe }}');
-    } catch (error) {
-        console.error('Error parsing data:', error);
-        sensorData = {
-            temperature: 0,
-            air_humidity: 0,
-            soil_humidity: 0
-        };
-        waterData = {
-            labels: [],
-            water_used: []
-        };
-    }
-
     document.addEventListener('DOMContentLoaded', function () {
-    // Update temperature display
-    document.getElementById('temperatureValue').textContent = sensorData.temperature + '°';
-    
-    var optionsHumidityAir = {
-        chart: {
-            type: 'radialBar',
-            height: '120%',
-            toolbar: { show: false }
-        },
-        series: [sensorData.air_humidity],
-        plotOptions: {
-            radialBar: {
-                hollow: { size: '75%' },
-                track: {
-                    background: '#f0f0f0',
-                    strokeWidth: '100%',
-                },
-                dataLabels: {
-                    show: true,
-                    name: { show: false },
-                    value: {
-                        fontSize: '36px',
-                        fontWeight: 'bold',
-                        color: '#01A970',
-                        formatter: function(val) {
-                            return val + "%";
+        var optionsHumidity = {
+            chart: {
+                type: 'radialBar',
+                height: '120%',
+                toolbar: { show: false }
+            },
+            series: [{{ dados.humidity|default:"0" }}],
+            plotOptions: {
+                radialBar: {
+                    hollow: { size: '75%' },
+                    track: {
+                        background: '#f0f0f0',
+                        strokeWidth: '100%',
+                    },
+                    dataLabels: {
+                        show: true,
+                        name: { show: false },
+                        value: {
+                            fontSize: '36px',
+                            fontWeight: 'bold',
+                            color: '#01A970',
+                            formatter: function(val) {
+                                return val + "%";
+                            }
                         }
                     }
                 }
-            }
-        },
-        fill: {
-            type: 'solid',
-            colors: ['#01A970']
-        },
-        labels: [],
-        tooltip: { enabled: false }
-    };
-    // Configuração do gráfico de Umidade do Solo (cor verde sólida)
-    var optionsHumiditySoil = {
-        chart: {
-            type: 'radialBar',
-            height: '120%',
-            toolbar: { show: false }
-        },
-        series: [sensorData.soil_humidity],
-        plotOptions: {
-            radialBar: {
-                hollow: { size: '75%' },
-                track: {
-                    background: '#f0f0f0',
-                    strokeWidth: '100%',
-                },
-                dataLabels: {
-                    show: true,
-                    name: { show: false },
-                    value: {
-                        fontSize: '36px',
-                        fontWeight: 'bold',
-                        color: '#01A970',
-                        formatter: function(val) {
-                            return val + "%";
-                        }
-                    }
-                }
-            }
-        },
-        fill: {
-            type: 'solid',
-            colors: ['#01A970']  // Cor verde sólida
-        },
-        labels: [],
-        tooltip: { enabled: false }
-    };
-
-    // Configuração do gráfico de Uso de Água
-    var waterUsageOptions = {
-        series: [{
-            name: 'Uso de Água (L)',
-            data: waterData.water_used
-        }],
-        chart: {
-            type: 'bar',
-            height: 350,
-            toolbar: { show: false }
-        },
-        plotOptions: {
-            bar: {
-                borderRadius: 10,
-                horizontal: false,
-                columnWidth: '50%',
-                colors: {
-                    ranges: [{
-                        from: 0,
-                        to: 1000,
-                        color: '#01A970'
-                    }],
-                    backgroundBarColors: ['#E6F7F1'],
-                    backgroundBarOpacity: 0.2,
-                }
-            }
-        },
-        dataLabels: { enabled: false },
-        colors: ['#01A970', '#01A970'],
-        xaxis: {
-            categories: waterData.labels,
-            labels: {
-                style: {
-                    colors: '#01A970',
-                    fontSize: '12px'
-                }
-            }
-        },
-        yaxis: {
-            labels: {
-                style: {
-                    colors: '#01A970',
-                    fontSize: '12px'
-                }
-            }
-        },
-        grid: {
-            borderColor: '#E6F7F1',
-            strokeDashArray: 4
-        },
-        tooltip: {
-            theme: 'light',
-            style: {
-                fontSize: '14px',
+            },
+            fill: {
+                type: 'solid',
                 colors: ['#01A970']
-            }
-        },
-        fill: { opacity: 0.9 }
-    };
+            },
+            labels: [],
+            tooltip: { enabled: false }
+        };
 
-    // Renderizar os gráficos
-    var chartHumidityAir = new ApexCharts(document.querySelector("#chart-humidity-air"), optionsHumidityAir);
-    var chartHumiditySoil = new ApexCharts(document.querySelector("#chart-humidity-soil"), optionsHumiditySoil);
-    var waterUsageChart = new ApexCharts(document.querySelector("#waterUsageChart"), waterUsageOptions);
-    
-    chartHumidityAir.render();
-    chartHumiditySoil.render();
-    waterUsageChart.render();
-});
+        var waterUsageOptions = {
+            series: [{
+                name: 'Precipitação (mm)',
+                data: {{ dados_chuva|safe|default:"[]" }}.map(item => item.valor)
+            }],
+            chart: {
+                type: 'bar',
+                height: 350,
+                toolbar: { show: false }
+            },
+            plotOptions: {
+                bar: {
+                    borderRadius: 10,
+                    horizontal: false,
+                    columnWidth: '50%',
+                    colors: {
+                        ranges: [{
+                            from: 0,
+                            to: 1000,
+                            color: '#01A970'
+                        }],
+                        backgroundBarColors: ['#E6F7F1'],
+                        backgroundBarOpacity: 0.2,
+                    }
+                }
+            },
+            dataLabels: { enabled: false },
+            colors: ['#01A970', '#01A970'],
+            xaxis: {
+                categories: {{ dados_chuva|safe|default:"[]" }}.map(item => item.data),
+                labels: {
+                    style: {
+                        colors: '#01A970',
+                        fontSize: '12px'
+                    }
+                }
+            },
+            yaxis: {
+                labels: {
+                    style: {
+                        colors: '#01A970',
+                        fontSize: '12px'
+                    }
+                }
+            },
+            grid: {
+                borderColor: '#E6F7F1',
+                strokeDashArray: 4
+            },
+            tooltip: {
+                theme: 'light',
+                style: {
+                    fontSize: '14px',
+                    colors: ['#01A970']
+                }
+            },
+            fill: { opacity: 0.9 }
+        };
+
+        new ApexCharts(document.querySelector("#humidity-chart"), optionsHumidity).render();
+        new ApexCharts(document.querySelector("#waterUsageChart"), waterUsageOptions).render();
+    });
 </script>
-
 {% endblock %}
