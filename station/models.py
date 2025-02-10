@@ -3,14 +3,10 @@ from django.utils import timezone
 
 class WeatherData(models.Model):
     WIND_DIRECTIONS = [
-        ('N', 'North'),
-        ('NE', 'Northeast'),
-        ('E', 'East'),
-        ('SE', 'Southeast'),
-        ('S', 'South'),
-        ('SW', 'Southwest'),
-        ('W', 'West'),
-        ('NW', 'Northwest'),
+        ('N', 'Norte'),
+        ('L', 'Leste'),
+        ('S', 'Sul'),
+        ('O', 'Oeste'),
     ]
 
     timestamp = models.DateTimeField(default=timezone.now, db_index=True)
