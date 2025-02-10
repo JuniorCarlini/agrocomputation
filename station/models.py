@@ -25,3 +25,56 @@ class WeatherData(models.Model):
 
     def __str__(self):
         return f'Record at {self.timestamp.strftime("%Y-%m-%d %H:%M")} - Wind: {self.wind_direction}'
+
+class WeatherSummary(models.Model):
+   # Temperatura
+   temperature_current = models.FloatField()
+   temperature_min = models.FloatField()
+   temperature_max = models.FloatField()
+
+   # Umidade
+   humidity_current = models.FloatField()
+   humidity_min = models.FloatField()
+   humidity_max = models.FloatField()
+
+   # Vento
+   wind_speed = models.FloatField()
+   wind_gust_speed = models.FloatField()
+
+   # Chuva
+   rain_probability = models.FloatField()
+   rain_accumulation = models.FloatField()
+
+   # Timestamp de criação
+   created_at = models.DateTimeField(auto_now_add=True)
+
+   @classmethod
+   def create_from_forecast_data(cls, forecast_data):
+       """
+       Método de classe para criar uma instância a partir dos dados da API
+       """
+       values = forecast_data.get('values', {})
+
+       return cls(
+           temperature_current=values.get('temperatureAvg', 0),
+           temperature_min=values.get('temperatureMin', 0),
+           temperature_max=values.get('temperatureMax', 0),
+           
+           humidity_current=values.get('humidityAvg', 0),
+           humidity_min=values.get('humidityMin', 0),
+           humidity_max=values.get('humidityMax', 0),
+           
+           wind_speed=values.get('windSpeedAvg', 0),
+           wind_gust_speed=values.get('windGustMax', 0),
+           
+           rain_probability=values.get('precipitationProbabilityAvg', 0),
+           rain_accumulation=values.get('rainAccumulationSum', 0)
+       )
+
+   def __str__(self):
+       return f"Weather Summary - {self.created_at}"
+
+   class Meta:
+       verbose_name = "Weather Summary"
+       verbose_name_plural = "Weather Summaries"
+       ordering = ['-created_at']
