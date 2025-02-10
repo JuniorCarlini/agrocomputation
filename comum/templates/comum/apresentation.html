@@ -15,13 +15,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
        
     <style>
-       
         body {
             background-color: var(--bs-body-bg);
             font-family: 'Inter', sans-serif;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
+            margin: 0;
+            padding: 0;
         }
 
         .text-justify_abolt {
@@ -31,7 +32,7 @@
         .main-container {
             max-width: 1200px;
             width: 100%;
-            flex: 1;
+            flex: 1 0 auto;
         }
 
         .navbar {
@@ -39,6 +40,28 @@
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             padding-bottom: 20px;
             padding-top: 10px;
+        }
+
+        .navbar-bottom {
+            background: linear-gradient(to right, #01A970, #197656);
+            margin-top: auto;
+            padding: 1rem 0;
+            box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
+        }
+
+        .navbar-bottom img {
+            height: 40px;
+            width: auto;
+        }
+
+        .navbar-bottom .nav-link {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .navbar-bottom .nav-link:hover {
+            opacity: 0.8;
         }
 
         .theme-toggle {
@@ -161,7 +184,7 @@
                     <div class="overlay position-relative h-100">
                         <div class="position-absolute bottom-0 start-0 p-3">
                             <h3 class="fw-bold mb-1">ESTAÇÃO METEOROLÓGICA</h3>
-                            <small class="text-white d-block"><i class="fa-solid fa-hand-middle-finger"></i> Clique para visualizar</small>
+                            <small class="text-white d-block"><i class="fa-solid fa-hand-pointer"></i> Clique para visualizar</small>
                         </div>
                     </div>
                 </a>
@@ -268,15 +291,39 @@
                 <h2 class="mb-4">Galeria</h2>
                 <div class="project-gallery row justify-content-center">
                     <div class="col-md-4"><img src="{% static 'images/img-1.jpg' %}" alt="Projeto 1"></div>
-                    <div class="col-md-4"><img src="{% static 'images/img-2.jpg' %}" alt="Projeto 1"></div>
-                    <div class="col-md-4"><img src="{% static 'images/img-3.jpg' %}" alt="Projeto 1"></div>
-                    <div class="col-md-4"><img src="{% static 'images/img-4.jpg' %}" alt="Projeto 1"></div>
-                    <div class="col-md-4"><img src="{% static 'images/img-1.jpg' %}" alt="Projeto 1"></div>
-                    <div class="col-md-4"><img src="{% static 'images/img-1.jpg' %}" alt="Projeto 1"></div>
+                    <div class="col-md-4"><img src="{% static 'images/img-2.png' %}" alt="Projeto 1"></div>
+                    <div class="col-md-4"><img src="{% static 'images/img-3.png' %}" alt="Projeto 1"></div>
+                    <div class="col-md-4"><img src="{% static 'images/img-4.png' %}" alt="Projeto 1"></div>
+                    <div class="col-md-4"><img src="{% static 'images/img-5.png' %}" alt="Projeto 1"></div>
+                    <div class="col-md-4"><img src="{% static 'images/img-6.png' %}" alt="Projeto 1"></div>
                 </div>
             </div>
         </div>
     </div>
+    <nav class="navbar navbar-bottom">
+        <div class="container">
+            <div class="row w-100 align-items-center">
+                <div class="col-md-4">
+                    <img src="{% static '/icons/logo_ifro_branca.png' %}" alt="Logo" class="img-fluid">
+                </div>
+                <div class="col-md-4 text-center d-none d-md-block">
+                    <span class="text-white">IFRO - Campus São Miguel do Guaporé - 2025</span>
+                </div>
+                <div class="col-md-4 text-end">
+                    <div class="d-flex justify-content-end gap-3">
+                        <a href="https://portal.ifro.edu.br/sao-miguel-do-guapore/cursos/12047-tecnologo-em-agrocomputacao" class="nav-link">
+                            <i class="bi bi-info-circle"></i>
+                            <span class="ms-1">Conheça o Curso</span>
+                        </a>
+                        <a href="https://portal.ifro.edu.br/contato-nav" class="nav-link">
+                            <i class="bi bi-envelope"></i>
+                            <span class="ms-1">Contato</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
