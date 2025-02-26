@@ -20,7 +20,7 @@
         </div>
         <div class="col-md-9">
             <div class="container container-style">
-                <h5 class="text-color-secondary">Nível pluviométrico</h5>
+                <h5 class="text-color-secondary">Precipitação Diária (mm)</h5>
                 <div id="waterUsageChart"></div>
             </div>
         </div>
@@ -166,7 +166,17 @@
                     }
                 }
             },
-            dataLabels: { enabled: false },
+            dataLabels: {
+                enabled: true,
+                formatter: function (val) {
+                    return val.toFixed(1) + " mm";
+                },
+                style: {
+                    fontSize: '12px',
+                    colors: ['#666']
+                },
+                offsetY: -20
+            },
             colors: ['#01A970', '#01A970'],
             xaxis: {
                 categories: {{ dados_chuva|safe|default:"[]" }}.map(item => item.data),
@@ -175,6 +185,13 @@
                         colors: '#01A970',
                         fontSize: '12px'
                     }
+                },
+                title: {
+                    text: 'Data',
+                    style: {
+                        fontSize: '12px',
+                        color: '#666'
+                    }
                 }
             },
             yaxis: {
@@ -182,6 +199,13 @@
                     style: {
                         colors: '#01A970',
                         fontSize: '12px'
+                    }
+                },
+                title: {
+                    text: 'Precipitação (mm)',
+                    style: {
+                        fontSize: '12px',
+                        color: '#666'
                     }
                 }
             },
@@ -194,6 +218,11 @@
                 style: {
                     fontSize: '14px',
                     colors: ['#01A970']
+                },
+                y: {
+                    formatter: function (val) {
+                        return val.toFixed(1) + " mm";
+                    }
                 }
             },
             fill: { opacity: 0.9 }
