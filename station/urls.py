@@ -15,6 +15,4 @@ urlpatterns = [
     path('wind-direction-chart/', views.wind_direction_chart_view, name='wind_direction_chart'),
     path('rainfall-chart/', views.rainfall_chart_view, name='rainfall_chart'),
     path('temperature-comparison-chart/', views.temperature_comparison_chart_view, name='temperature_comparison_chart'),
-
-
 ]
