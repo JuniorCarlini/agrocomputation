@@ -6,7 +6,7 @@
             <a href="/" class="ms-5">
                 <img class="logo" src="{% static '/icons/logo_largue.svg' %}" alt="logo" height="40">
             </a>
-            <div class="mb-1">
+            <div class="mb-1 d-none d-md-block">
                 {% if '/irrigation/' in request.path %}
                     <span class="text-white fs-4 fw-bolder ms-2"> / Sistema de Irrigação</span>
                 {% elif '/station/' in request.path %}
@@ -41,31 +41,31 @@
                                 </button>
                             </h2>
                             <div id="flush-collapseOne" class="accordion-collapse collapse" 
-                                 data-bs-parent="#accordionOne">
+                                data-bs-parent="#accordionOne">
                                 <div class="ms-3">
                                     <div class="accordion-body">
                                         <a href="/irrigation/"><i class="fa-solid fa-chart-line"></i> Dashboard</a>
                                     </div>
                                     <div class="accordion-body">
-                                        <a href="/irrigation/temperature-chart/"><i class="fa-solid fa-temperature-arrow-up"></i> Sensor Temperatura do Ar</a>
+                                        <a href="/irrigation/temperature-chart/"><i class="fa-solid fa-temperature-high"></i> Temperatura do Ar</a>
                                     </div>
                                     <div class="accordion-body">
-                                        <a href="/irrigation/air-humidity-chart/"><i class="fa-solid fa-temperature-arrow-up"></i> Sensor Umidade do Ar</a>
+                                        <a href="/irrigation/air-humidity-chart/"><i class="fa-solid fa-droplet"></i> Umidade do Ar</a>
                                     </div>
                                     <div class="accordion-body">
-                                        <a href="/irrigation/soil-humidity-chart/"><i class="fa-solid fa-temperature-arrow-up"></i> Sensor Umidade do Solo</a>
+                                        <a href="/irrigation/soil-humidity-chart/"><i class="fa-solid fa-seedling"></i> Umidade do Solo</a>
                                     </div>
                                     <div class="accordion-body">
-                                        <a href="/irrigation/water-usage-chart/"><i class="fa-solid fa-droplet"></i> Uso Diario de Água</a>
+                                        <a href="/irrigation/water-usage-chart/"><i class="fa-solid fa-faucet-drip"></i> Uso Diário de Água</a>
                                     </div>
                                     <div class="accordion-body">
-                                        <a href="/irrigation/fertil-usage-chart/"><i class="fa-solid fa-droplet"></i> Histórico de Fertirrigação</a>
+                                        <a href="/irrigation/fertil-usage-chart/"><i class="fa-solid fa-flask"></i> Histórico de Fertirrigação</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-        
+
                     <!-- Second Accordion -->
                     <div class="accordion accordion-flush" id="accordionTwo">
                         <div class="accordion-item">
@@ -77,16 +77,34 @@
                                 </button>
                             </h2>
                             <div id="flush-collapseTwo" class="accordion-collapse collapse" 
-                                 data-bs-parent="#accordionTwo">
+                                data-bs-parent="#accordionTwo">
                                 <div class="ms-3">
                                     <div class="accordion-body">
                                         <a href="/station/"><i class="fa-solid fa-chart-line"></i> Dashboard</a>
                                     </div>
                                     <div class="accordion-body">
-                                        <a href="/temperature-chart/"><i class="fa-solid fa-temperature-arrow-up"></i> Sensor Temperatura do Ar</a>
+                                        <a href="/station/dht-temperature-chart/"><i class="fa-solid fa-temperature-high"></i> Temperatura DHT</a>
                                     </div>
                                     <div class="accordion-body">
-                                        <a href="/air-humidity-chart/"><i class="fa-solid fa-temperature-arrow-up"></i> Sensor Umidade do Ar</a>
+                                        <a href="/station/bmp-temperature-chart/"><i class="fa-solid fa-temperature-low"></i> Temperatura BMP</a>
+                                    </div>
+                                    <div class="accordion-body">
+                                        <a href="/station/air-humidity-chart/"><i class="fa-solid fa-droplet"></i> Umidade do Ar</a>
+                                    </div>
+                                    <div class="accordion-body">
+                                        <a href="/station/pressure-chart/"><i class="fa-solid fa-gauge-high"></i> Pressão Atmosférica</a>
+                                    </div>
+                                    <div class="accordion-body">
+                                        <a href="/station/wind-speed-chart/"><i class="fa-solid fa-wind"></i> Velocidade do Vento</a>
+                                    </div>
+                                    <div class="accordion-body">
+                                        <a href="/station/wind-direction-chart/"><i class="fa-solid fa-compass"></i> Direção do Vento</a>
+                                    </div>
+                                    <div class="accordion-body">
+                                        <a href="/station/rainfall-chart/"><i class="fa-solid fa-cloud-rain"></i> Precipitação</a>
+                                    </div>
+                                    <div class="accordion-body">
+                                        <a href="/station/temperature-comparison-chart/"><i class="fa-solid fa-chart-column"></i> Comparação de Temperaturas</a>
                                     </div>
                                 </div>
                             </div>
