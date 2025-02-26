@@ -1,0 +1,12 @@
+# Django settings
+SECRET_KEY=sua-chave-secreta-aqui
+DEBUG=True
+
+# PostgreSQL
+POSTGRES_DATABASE=nome_do_banco
+POSTGRES_USER=usuario_do_banco
+POSTGRES_PASSWORD=senha_do_banco
+POSTGRES_HOST=hostname.do.seu.banco
+POSTGRES_PORT=5432
+POSTGRES_SSLMODE=require
+# POSTGRES_OPTIONS=endpoint=ep-seu-endpoint-12345679
