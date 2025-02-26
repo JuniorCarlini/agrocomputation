@@ -6,11 +6,7 @@ from rest_framework.response import Response
 from project.decorators import token_required
 from rest_framework.decorators import api_view
 from .serializers import (DataCollectionSerializer, SolenoidStateSerializer, StoricFertilSerializer, FertilizationStateSerializer)
-from irrigation.models import (
-    DataCollection, WaterUsage, StatusFertil, 
-    StoricFertil, ConfigFertil, FlowRate,
-    SolenoidState, TimeFerti
-)
+from irrigation.models import (DataCollection, WaterUsage, StatusFertil, StoricFertil, ConfigFertil, FlowRate, SolenoidState, TimeFerti)
 
 @api_view(['POST'])
 @token_required
