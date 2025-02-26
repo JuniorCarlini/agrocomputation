@@ -1,0 +1,83 @@
+{% extends "base/base.html" %}
+
+{% load static %}
+
+{% block title %}Histórico Temperatura DHT{% endblock %}
+
+{% block content %}
+
+<div class="container mt-4">
+    <h2 class="mt-4 mb-4 ms-3 text-success">Histórico Temperatura DHT</h2>
+    <form method="get" action="{% url 'dht_temperature_chart' %}">
+        <div class="row row-style mb-3 d-flex justify-content-between align-items-center">
+            <div class="col-12 mb-2">
+                <p class="text-success m-0">Selecione o período desejado:</p>
+            </div>
+            <div class="col-12 col-sm-6 col-md-3 mb-2">
+                <label for="data-inicio" class="form-label m-0 text-success">Data Início:</label>
+                <input type="date" id="data-inicio" name="data_inicio" class="form-control w-100" value="{{ data_inicio|default:'' }}" required>
+            </div>
+            <div class="col-12 col-sm-6 col-md-3 mb-2">
+                <label for="data-fim" class="form-label m-0 text-success">Data Fim:</label>
+                <input type="date" id="data-fim" name="data_fim" class="form-control w-100" value="{{ data_fim|default:'' }}" required>
+            </div>
+            <div class="col-12 col-sm-6 col-md-3 mb-2">
+                <label for="hora-inicio" class="form-label m-0 text-success">Hora Início:</label>
+                <input type="time" id="hora-inicio" name="hora_inicio" class="form-control w-100" value="{{ hora_inicio|default:'' }}" required>
+            </div>
+            <div class="col-12 col-sm-6 col-md-3 mb-2">
+                <label for="hora-fim" class="form-label m-0 text-success">Hora Fim:</label>
+                <input type="time" id="hora-fim" name="hora_fim" class="form-control w-100" value="{{ hora_fim|default:'' }}" required>
+            </div>
+            <div class="col-12 mt-2 mb-2">
+                <button type="submit" class="btn w-100 btn-success"><i class="bi bi-search"></i> Buscar</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="container container-style mt-4">
+    <div id="dhtTemperatureChart"></div>
+</div>
+<script>
+    var options = {
+        chart: {
+            type: 'line',
+            height: 350,
+            toolbar: {
+                show: false
+            }
+        },
+        series: [{
+            name: 'Temperatura DHT',
+            data: {{ dht_temperature_data | safe }},
+            color: '#198754'
+        }],
+        xaxis: {
+            categories: {{ labels | safe }},
+            labels: {
+                formatter: function(value) {
+                    return value;
+                }
+            }
+        },
+        yaxis: {
+            labels: {
+                formatter: function(value) {
+                    return value + " °C";
+                }
+            }
+        },
+        tooltip: {
+            y: {
+                formatter: function(value) {
+                    return value + " °C";
+                }
+            }
+        }
+    };
+    var chart = new ApexCharts(document.querySelector("#dhtTemperatureChart"), options);
+    chart.render();
+</script>
+
+{% endblock %}
