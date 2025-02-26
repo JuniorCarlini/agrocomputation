@@ -2,10 +2,14 @@ import os
 import json
 import django
 import requests
+from dotenv import load_dotenv
 from datetime import timedelta
 from django.utils import timezone
 from station.models import WeatherSummary
 from django.core.management.base import BaseCommand
+
+# Load environment variables from .env file
+load_dotenv()
 
 class Command(BaseCommand):
     help = 'Salva previsão do tempo diariamente'
@@ -91,10 +95,17 @@ class Command(BaseCommand):
                 print(f"Já existe registro para {amanha}")
 
         def get_weather_forecast():
+            # Retrieve API key from environment variable
+            api_key = os.getenv('TOMORROW_IO_API_KEY')
+            
+            if not api_key:
+                print("Erro: Chave de API não configurada")
+                return None
+            
             url = "https://api.tomorrow.io/v4/weather/forecast"
             params = {
                 "location": "-11.9043,-62.7174",
-                "apikey": "FVoaghx9qiWQuM2kWiXf0A4Moa1NjZ7u"
+                "apikey": api_key
             }
             
             try:
